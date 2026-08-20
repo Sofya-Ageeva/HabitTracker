@@ -68,6 +68,7 @@ class Habit(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    last_reminder_sent = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         verbose_name = 'Привычка'
