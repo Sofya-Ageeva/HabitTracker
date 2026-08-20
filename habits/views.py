@@ -39,7 +39,12 @@ class HabitViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         """Фильтруем привычки по пользователю"""
+        if getattr(self, 'swagger_fake_view', False):
+            return Habit.objects.none()
         user = self.request.user
+
+        if not user.is_authenticated:
+            return Habit.objects.none()
 
         if user.is_superuser:
             return Habit.objects.all()
