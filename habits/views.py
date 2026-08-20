@@ -12,6 +12,7 @@ from .serializers import HabitSerializer, HabitListSerializer
 from .permissions import IsOwner, IsPublicHabit
 from .pagination import HabitPagination
 from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
 
 class HabitViewSet(viewsets.ModelViewSet):
