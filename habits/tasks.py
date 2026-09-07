@@ -13,7 +13,6 @@ def send_habit_reminders():
     current_date = now.date()
 
     habits = Habit.objects.filter(
-        is_active=True,
         time__lte=current_time,
     )
 

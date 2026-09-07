@@ -2,8 +2,6 @@
 
 Бэкенд-сервис для формирования и отслеживания полезных привычек на основе книги «Атомные привычки» Джеймса Клира.
 
----
-
 ## Технологии
 
 - **Django** + **DRF** — бэкенд
@@ -12,9 +10,8 @@
 - **PostgreSQL** / **SQLite** — база данных
 - **Telegram API** — уведомления
 - **drf-yasg** — документация (Swagger/ReDoc)
-- **Coverage** — тестирование (89% покрытие)
-
----
+- **Docker** + **Docker Compose**
+- **Githab Actions (CI/CD)
 
 ## Основной функционал
 
@@ -28,7 +25,7 @@
 - Фоновые задачи (Celery)
 - Публичные привычки
 
-## Установка
+## Запуск через Docker
 
 1. Клонировать репозиторий
 ```
@@ -36,50 +33,30 @@ git clone https://github.com/Sofya-Ageeva/HabitTracker.git
 cd HabitTracker
 ```
 
-2. Создать и активировать виртуальное окружение
-```
-python3 -m venv venv
-```
-source venv/bin/activate  # Mac/Linux
-# venv\Scripts\activate   # Windows
-
-3. Установить зависимости
-```
-pip install -r requirements.txt
-```
-
-4. Создать .env (скопировать из .env.template)
+2. Создать .env и заполнить его своими данными на основе шаблона
 ```
 cp .env.template .env
 ```
+
 # Заполнить SECRET_KEY, настройки БД, Redis, Telegram токен
 
-5. Применить миграции
+3. Запуск проекта
 ```
-python manage.py migrate
-```
-
-6. Создать суперпользователя
-```
-python manage.py createsuperuser
-```
-7. Запустить сервер
-```
-python manage.py runserver
+docker compose up -d --build
 ```
 
-## Тестирование существующих функций
-1. Реализованы тесты c покрытием кода более чем на 80 %. 
-Для запуска теста необходимо ввести в командной строке следующую команду:
+4. Применить миграции
 ```
-python manage.py test
-coverage run manage.py test
-coverage report
+docker compose exec web python manage.py migrate
 ```
-4. Для формирования веб-отчета:
+
+5. Создать суперпользователя
 ```
-coverage html
+docker compose exec web python manage.py createsuperuser
 ```
-5. Результаты тестирования содержаться в папке `htmlcov/`)
-После выполнения откройте htmlcov/index.html в браузере.
+## Документация
+- Swagger: http://localhost:8000/swagger/
+- ReDoc: http://localhost:8000/redoc/
+
+
 
