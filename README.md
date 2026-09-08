@@ -57,6 +57,13 @@ docker compose exec web python manage.py createsuperuser
 ## Документация
 - Swagger: http://localhost:8000/swagger/
 - ReDoc: http://localhost:8000/redoc/
+- Swagger: http://158.160.240.56:81/swagger/
+- Админка: http://158.160.240.56:81/admin/
+
+
+## Развернутый проект доступен по следующему адресу:
+http://158.160.240.56:81/
+
 
 
 
